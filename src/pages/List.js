@@ -19,8 +19,10 @@ const rowSelection = {
 
 const List =()=>{
 const data=useFetch('http://localhost:4000/');
+const data1=useFetch('http://localhost:4001/company');
 
 console.log(data)
+console.log("data1",data1)
 const dataSource = [
   {
     key: '1',
