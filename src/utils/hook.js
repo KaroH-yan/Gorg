@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 
-export const Fetch=(url)=> {
+export  const useFetch=(url)=> {
 
   const [data, setData] = useState([]);
 
@@ -19,5 +19,3 @@ export const Fetch=(url)=> {
   return [data];
 
 }
-
-//export { useFetch };

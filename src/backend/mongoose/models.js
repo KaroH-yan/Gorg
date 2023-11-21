@@ -5,13 +5,9 @@ const Schema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-  },
-  notes: {
-    type: String,
-    default: 0,
-  },
+  }
 });
 
-const data = mongoose.model("listingsAndReviews", Schema);
+const data = mongoose.model("user", Schema);
 
 module.exports = data;

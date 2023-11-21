@@ -1,27 +1,26 @@
 import React, {useState,useEffect} from 'react'
-import {Fetch} from '../utils/hook'
+import  {useFetch} from '../utils/hook'
 import {Table} from 'antd'
 
 
 
-const rowSelection = {
 
+
+const rowSelection = {
   
-  
-  onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => {
+  onChange: (selectedRowKeys, selectedRows) => {
     console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
   },
-  getCheckboxProps: (record: DataType) => ({
+  getCheckboxProps: (record) => ({
     disabled: record.name === 'Disabled User', // Column configuration not to be checked
     name: record.name,
   }),
 };
 
 const List =()=>{
+const data=useFetch('http://localhost:4000/');
 
-  const [data] = Fetch(
-    'http://localhost:4000/getUsers'
-  );
+console.log(data)
 const dataSource = [
   {
     key: '1',
@@ -55,7 +54,7 @@ const columns = [
   },
 ];
 return(
-<Table dataSource={dataSource} columns={columns} />
+  <Table dataSource={dataSource} columns={columns} />
 )
 }
 
