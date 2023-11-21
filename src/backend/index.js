@@ -14,7 +14,6 @@ const cluster = process.env.mongoDBCluster;
 const dbname = "sample_airbnb";
 
 mongoose.connect(
-    // "mongodb+srv://karo94:E66kabKN2vRjMFjT@cluster0.4lbl1xt.mongodb.net/?retryWrites=true&w=majority",
   `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/$?retryWrites=true&w=majority`, {
     dbName:dbname
   }
