@@ -16,6 +16,7 @@ export  const useFetch=(url)=> {
     fetchUrl();
   }, []);
 
-  return [data];
+  return data;
 
 }
+

@@ -4,6 +4,9 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 const Router = require("./mongoose/routes");
 const RouterCompany = require("./mongoose/routesCompany");
+const RouterArticles = require("./mongoose/routesArticles")
+const CsvUpload = require("express-fileupload");
+const bodyParser = require("body-parser");
 
 const app = express();
 app.use(cors({origin: "*"}))
@@ -21,6 +24,7 @@ mongoose.connect(
 );
 
 const db = mongoose.connection;
+
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
   console.log("Connected successfully");
@@ -32,8 +36,15 @@ app.listen(ServerPort, () => {
   console.log(`Server is running at port ${ServerPort}`);
 });
 
+app.use(CsvUpload());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 app.use(RouterCompany);
-const ServerPortCompany = process.env.BackendCompanyPort;
-app.listen(ServerPortCompany, () => {
-  console.log(`Server is running at port ${ServerPortCompany}`);
+app.use(RouterArticles);
+const BackendCompanyPort = process.env.Backend_Company_Port;
+app.listen(BackendCompanyPort, () => {
+  console.log(`Server is running at port ${BackendCompanyPort}`);
 });
