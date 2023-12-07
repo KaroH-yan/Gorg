@@ -11,14 +11,6 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(cors({ origin: "*" }));
 app.use(express.json());
-// app.use(bodyParser.json({ limit: "35mb" }));
-// app.use(
-//   bodyParser.urlencoded({
-//     extended: true,
-//     limit: "35mb",
-//     parameterLimit: 50000,
-//   })
-// );
 
 const username = process.env.mongoDBLogin;
 const password = process.env.mongoDBPassword;
